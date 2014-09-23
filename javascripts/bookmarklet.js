@@ -8,3 +8,31 @@ function grabInfo(){
   var title = document.title
   $('#content_box').html(url + ' --- ' + title);
 }
+
+function jQueryCheck(){
+    var v = '1.11.1';
+
+  // check for inclusion and/or version
+  if (window.jQuery === undefined || window.jQuery.fn.jquery < v) {
+     done = false;
+     script = document.createElement('script');
+     // ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js
+    script.src = 'http://ajax.googleapis.com/ajax/libs/jquery/' + v + '/jquery.min.js';
+    document.body.appendChild(script);
+    script.onload = script.onreadystatechange = function(){
+      if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")){
+      var done = true
+      alert('no jquery here');
+      initMyBookmarklet();
+      }
+    }
+  } else {
+    initMyBookmarklet();
+    alert('test for bookmarklet');
+  }
+}
+
+function initMyBookmarklet() {
+  alert('activate bookmarklet js code');
+  // js code here
+}
