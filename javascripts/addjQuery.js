@@ -14,9 +14,10 @@
         initMyBookmarklet();
     };
     document.getElementsByTagName("head")[0].appendChild(script);
-  } else {
-    initMyBookmarklet();
-  }
+  }else {
+     initMyBookmarklet();
+   }
+}
 
   function initMyBookmarklet() {
     (window.myBookmartlet.function(){
