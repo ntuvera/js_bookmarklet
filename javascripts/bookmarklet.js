@@ -17,7 +17,7 @@ function jQueryLoad(){
   if (window.jQuery === undefined || window.jQuery.fn.jquery < v){
     var done = false;
     var script = document.createElement('script');
-    script.src = "http:/ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
+    script.src = "https://ajax.googleapis.com/ajax/libs/jquery/" + v + "/jquery.min.js";
     // not sure about the onreadystatechange function, can't access readyState solo
     script.onload = script.onreadystatechange = function(){
       if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
@@ -40,3 +40,5 @@ function grabInfo(){
 }
 
 jQueryLoad();
+
+https://googledrive.com/host/0B91-uQdfC-5_bGF1TGhYQjVsZ2c/bookmarklet.js
