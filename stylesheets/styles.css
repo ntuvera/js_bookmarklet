@@ -8,7 +8,7 @@
     z-index:1000000;
 }​
 
-#dropbox iframe{
+#wikiframe iframe{
   display: none;
   position: fixed;
   top: 10%; left: 10%;
@@ -20,7 +20,7 @@
 
 }
 
-#dropbox_viel{
+#wikiframe_viel{
   display: none;
   position: fixed;
   width: 100%;
@@ -32,7 +32,7 @@
   z-index: 900;
 }
 
-#dropbox_viel p{
+#wikiframe_viel p{
   color: black;
   font: normal normal bold 20px/20px Helvetica, sans-serif;
   position: absolute;
