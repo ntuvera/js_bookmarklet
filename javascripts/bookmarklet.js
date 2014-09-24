@@ -15,28 +15,44 @@ function jQueryCheck(){
     // (window.myBookmarklet = function(){
       url = document.location.href;
       title = document.title;
-      // javaScript code goes here
-      var $frame = $('<div>');
-      $frame.attr('id','frame');
-      var $frame_veil = $('<div>');
-      $frame_veil.attr('id','frame_veil')//.text('Loading...');
-      // $frame_veil.text('Enable iFrames.');
-      var $iframe = $('<iframe>');
-      $iframe.attr('id', 'view_port');
-      $iframe.attr('style', '');
-      $iframe.attr('onload', "$('#frame iframe').slideDown(500)");
-      // $iframe.text('Enable iFrame');
-      var url = 'bookmarklet.html';
-      // var url = 'http://localhost:3000/bookmarklet' + '&ouput=embed';
-      // var url = 'http://localhost:3000/bookmarklet' +'?from=iframe';
-      $iframe.attr('src', url);
-      $('body').append($frame);
-      $frame.append($frame_veil);
-      $frame_veil.append($iframe);
-      $('#frame_veil').fadeIn(750);
-
-}
+      // open and close bookmarklet window coniditional
+      if (!document.getElementById('view_port')){
+        var $frame = $('<div>');
+        $frame.attr('id','frame');
+        var $frame_veil = $('<div>');
+        $frame_veil.attr('id','frame_veil')//.text('Loading...');
+        // $frame_veil.text('Enable iFrames.');
+        var $iframe = $('<iframe>');
+        $iframe.attr('id', 'view_port');
+        // $iframe.attr('style', '');
+        //slide down animation not working
+        $iframe.attr('onload', "$('#frame iframe').slideDown(500)");
+        // $iframe.text('Enable iFrame');
+        var url = 'bookmarklet.html';
+        // var url = 'http://localhost:3000/bookmarklet' + '&ouput=embed';
+        // var url = 'http://localhost:3000/bookmarklet' +'?from=iframe';
+        $iframe.attr('src', url);
+        $('body').append($frame);
+        $frame.append($frame_veil);
+        $frame_veil.append($iframe);
+        $('#frame_veil').fadeIn(750);
+      } else {
+          $('#frame_veil').fadeOut(750);
+          $('#frame iframe').slideUp(500);
+          setTimeout("$('#frame').remove()", 750);
+      }
+      // manual close by clicking anywhere outside frame_veil
+      $(document).on('click', function(event){
+        if (!$(event.target).closest('#frame_veil').length){
+          $('#frame_veil').fadeOut(750);
+          $('#frame iframe').slideUp(500);
+          setTimeout("$('#frame').remove()", 750);
+        }
+      })
     // })
+  }
+
+  // })
   // }
 // function includes checker for jQuery and loads requestions version v
 function jQueryLoad(){
