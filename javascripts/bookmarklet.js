@@ -11,49 +11,54 @@ function jQueryCheck(){
 // function to create floating div over any current page
 // will use javascript to pull title and url and place into form
 
-  function initMyBookmarklet(){
-    // (window.myBookmarklet = function(){
-      url = document.location.href;
-      title = document.title;
-      // open and close bookmarklet window coniditional
-      if (!document.getElementById('view_port')){
-        var $frame = $('<div>');
-        $frame.attr('id','frame');
-        var $frame_veil = $('<div>');
-        $frame_veil.attr('id','frame_veil')//.text('Loading...');
-        // $frame_veil.text('Enable iFrames.');
-        var $iframe = $('<iframe>');
-        $iframe.attr('id', 'view_port');
-        // $iframe.attr('style', '');
-        //slide down animation not working
-        $iframe.attr('onload', "$('#frame iframe').slideDown(500)");
-        // $iframe.text('Enable iFrame');
-        var url = 'bookmarklet.html';
-        // var url = 'http://localhost:3000/bookmarklet' + '&ouput=embed';
-        // var url = 'http://localhost:3000/bookmarklet' +'?from=iframe';
-        $iframe.attr('src', url);
-        $('body').append($frame);
-        $frame.append($frame_veil);
-        $frame_veil.append($iframe);
-        $('#frame_veil').fadeIn(750);
-      } else {
-          $('#frame_veil').fadeOut(750);
-          $('#frame iframe').slideUp(500);
-          setTimeout("$('#frame').remove()", 750);
-      }
-      // manual close by clicking anywhere outside frame_veil
-      $(document).on('click', function(event){
-        if (!$(event.target).closest('#frame_veil').length){
-          $('#frame_veil').fadeOut(750);
-          $('#frame iframe').slideUp(500);
-          setTimeout("$('#frame').remove()", 750);
-        }
-      })
-    // })
-  }
+function initMyBookmarklet(){
+  // (window.myBookmarklet = function(){
+    url = document.location.href;
+    title = document.title;
+    // open and close bookmarklet window coniditional
+    // need to code styles into bookmarklet.js
+    if (!document.getElementById('view_port')){
+      var $frame = $('<div>');
+      var $frame_veil = $('<div>');
+      var $iframe = $('<iframe>');
+      var url = 'bookmarklet.html';
 
-  // })
-  // }
+      $frame.attr('id','frame');
+      $frame_veil.attr('id','frame_veil');
+      $iframe.attr('id', 'view_port');
+      $iframe.attr('src', url);
+
+      $iframe.css('position', 'absolute').css('height', '250px').css('width', '400px')
+            .css('border', '1px solid black').css('right', '0.5em').css('top', '0.5em');
+      $frame_veil.css('position', 'absolute').css('display', 'none').css('width', '100%')
+            .css('height', '100%').css('margin-right', '0%').css('top', '0').css('right', '0')
+            .css('background-color', 'rgba(125, 125, 125, .90').css('cursor', 'pointer')
+            .css('z-index', '900');
+
+      $('body').append($frame);
+      $frame.append($frame_veil);
+      $frame_veil.append($iframe);
+
+      $('#frame_veil').fadeIn(250);
+      $('#view_port').hide()
+      $('#view_port').slideDown(500);
+
+    } else {
+
+        $('#frame_veil').fadeOut(750);
+        $('#frame iframe').slideUp(500);
+        setTimeout("$('#frame').remove()", 750);
+    }
+    // manual close by clicking anywhere outside frame_veil
+    $('#frame_veil').on('click', function(event){
+      if (!$(event.target).closest('#view_port').length){
+        $('#frame_veil').fadeOut(750);
+        $('#frame iframe').slideUp(500);
+        setTimeout("$('#frame').remove()", 750);
+      }
+    })
+}
+
 // function includes checker for jQuery and loads requestions version v
 function jQueryLoad(){
   // check for jQuery at least version 1.11.1
@@ -69,18 +74,16 @@ function jQueryLoad(){
     script.onload = script.onreadystatechange = function(){
       if (!done && (!this.readyState || this.readyState == "loaded" || this.readyState == "complete")) {
         var done = true;
-        console.log('jQuery is loaded version: ' + jQuery.fn.jquery);
+        // console.log('jQuery is loaded version: ' + jQuery.fn.jquery);
         initMyBookmarklet();
       }
     };
     document.getElementsByTagName('head')[0].appendChild(script);
   } else {
-    console.log('jQuery is active already: ' + jQuery.fn.jquery);
+    // console.log('jQuery is active already: ' + jQuery.fn.jquery);
     initMyBookmarklet();
   }
 }
-
-
 
 
 // grabInfo() grabs relevant data and appends to div with id='content_box'

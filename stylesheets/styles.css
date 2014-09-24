@@ -7,30 +7,34 @@
     width:200px;
     z-index:1000000;
 }​
+/* is the following stylesheet relevant? */
+/*
 #frame iframe{
   display: none;
   position: fixed;
+  background: rgba(0, 0, 0, 1);
   top: 10%; left: 10%;
   width: 90%;
   height: 90%;
   z-index: 999;
-  border: 10px solid rgba(0,0,0,.5);
+  border: 10px solid rgba(0,0,0,1);
   margin: -5px 0 0 -5px;
 }
-
+*/
 /*original frame_veil not centered */
-#frame_veil{
+/*#frame_veil{
   display: none;
   position: absolute;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height:100%;
   margin-right: 0%;
   top: 0;
   right: 0;
-  background-color: rgba(255,255,255,.95);
+  background-color: rgba(125,125,125,.95);
   cursor: pointer;
   z-index: 900;
-}
+}*/
+/* necessary to inline code yet? */
 #frame_veil p{
   color: black;
   font: normal normal bold 20px/20px Helvetica, sans-serif;
@@ -41,8 +45,12 @@
   margin: -10px auto 0 -5em;
   text-align: center;
 }
-#view_port{
-  height: 95%;
-  width: 95%;
+/*#view_port{
+  position: absolute;
+  height: 250px;
+  width: 400px;
   border: 1px solid black;
+  right: 0.5em;
+  top: 0.5em;
 }
+*/
