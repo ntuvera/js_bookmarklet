@@ -8,7 +8,7 @@
     z-index:1000000;
 }​
 
-#wikiframe iframe{
+#frame iframe{
   display: none;
   position: fixed;
   top: 10%; left: 10%;
@@ -17,22 +17,21 @@
   z-index: 999;
   border: 10px solid rgba(0,0,0,.5);
   margin: -5px 0 0 -5px;
-
 }
 
-#wikiframe_viel{
+#frame_veil{
   display: none;
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 30%;
+  height: 30%;
   top: 0;
-  left: 0;
+  right: 0;
   background-color: rgba(255,255,255,.25);
   cursor: pointer;
   z-index: 900;
 }
 
-#wikiframe_viel p{
+#frame_veil p{
   color: black;
   font: normal normal bold 20px/20px Helvetica, sans-serif;
   position: absolute;
