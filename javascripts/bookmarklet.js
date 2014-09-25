@@ -21,11 +21,12 @@ function initMyBookmarklet(){
       var $frame = $('<div>');
       var $frame_veil = $('<div>');
       var $iframe = $('<iframe>');
-      var url = 'bookmarklet.html';
+      var url = 'http://html5demos.com/postmessage2';
 
       $frame.attr('id','frame');
       $frame_veil.attr('id','frame_veil');
       $iframe.attr('id', 'view_port');
+      $iframe.attr('sandbox', 'allow-same-origin allow-scripts');
       $iframe.attr('src', url);
 
       $iframe.css('position', 'absolute').css('height', '250px').css('width', '400px')
